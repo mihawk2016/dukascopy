@@ -27,7 +27,8 @@ def day_tasks(symbol, date):
     :param date: date
     :return: create tasks for one day
     """
-    url_temp = URL_TEMP_DATE.format(symbol=symbol, year=date.year, month=date.month - 1, day=date.day)
+    date_string = URL_TEMP_DATE.format(symbol=symbol, year=date.year, month=date.month - 1, day=date.day)
+    print(date_string)
     return [asyncio.ensure_future(
         get_file_stream(URL_TEMP.format(symbol=symbol, **url_info, hour=i))) for i in range(24)
     ]
